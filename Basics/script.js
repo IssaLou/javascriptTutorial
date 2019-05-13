@@ -256,13 +256,51 @@ if (height === '23') {
 * CODING CHALLENGE 2
 ********************/
 
-var johnAve = (116 + 94 + 123) / 3;
-var mikeAve = (116 + 94 + 123) / 3;
+// var johnAve = (89 + 120 + 103) / 3;
+// var mikeAve = (116 + 94 + 123) / 3;
+// var maryAve = (97 + 134 + 105) / 3;
+// console.log(johnAve, mikeAve, maryAve);
 
-if (johnAve > mikeAve) {
-  console.log('John\'s teams average is higher than Mike\'s with ' + johnAve + ' points.');
-} else if (mikeAve > johnAve) {
-  console.log('Mike\'s teams average is higher than John\'s with ' + mikeAve + ' points.');
-} else {
-  console.log('Both teams had the same average: \nMike: ' + mikeAve + '\nJohn: ' + johnAve)
-}
+// if (johnAve > mikeAve && johnAve > maryAve) {
+//   console.log('John\'s teams average is higher than Mike\'s and Mary\'s with ' + johnAve + ' points.');
+// } else if (mikeAve > johnAve && mikeAve > maryAve) {
+//   console.log('Mike\'s teams average is higher than John\'s and Mary\'s with ' + mikeAve + ' points.');
+// } else if (maryAve > johnAve && maryAve > mikeAve){
+//   console.log('Mary\'s teams average is higher than John\'s and Mike\'s with ' + maryAve + ' points.');
+// } else {
+//   console.log('There is a draw')
+// }
+
+/**************
+ *  FUNCTIONS
+ **************/
+
+//  function calculateAge(birthYear) {
+//      return 2019 - birthYear;
+//  }
+
+//  var ageJohn = calculateAge(1990);
+//  var ageMike = calculateAge(1948);
+//  var ageJane = calculateAge(1969);
+// console.log(ageJohn, ageMike, ageJane);
+
+// function yearsUntilRetirement(year, firstName) {
+//     var age = calculateAge(year);
+//     var retirement = 65 - age;
+
+//     if (retirement > 0) {
+//         console.log(firstName + ' retires in ' + retirement + ' years.');
+//     } else {
+//         console.log(firstName + ' is already retired.');
+//     }
+// }
+
+// yearsUntilRetirement(1990, 'John');
+// yearsUntilRetirement(1948, 'Mike');
+// yearsUntilRetirement(1969, 'Jane');
+
+/*************************************
+ * FUNCTION STATEMENT AND EXPRESSIONS
+ *************************************/
+
+ 
