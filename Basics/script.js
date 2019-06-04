@@ -331,31 +331,52 @@ if (height === '23') {
  *********/
 
  // Initialize new array
- var names = ['John', 'Mark', 'Jane'];
- var years = new Array(1990, 1969, 1948);
+//  var names = ['John', 'Mark', 'Jane'];
+//  var years = new Array(1990, 1969, 1948);
 
- console.log(names);
- console.log(names[1]);
- console.log(names.length);
+//  console.log(names);
+//  console.log(names[1]);
+//  console.log(names.length);
 
-// Mutate Array Data
- names[1] = 'Ben';
- names[names.length] = 'Mary';
- console.log(names);
+// // Mutate Array Data
+//  names[1] = 'Ben';
+//  names[names.length] = 'Mary';
+//  console.log(names);
 
- // Different data types
- var john = ['John', 'Smith', 1990, 'designer', false];
+//  // Different data types
+//  var john = ['John', 'Smith', 1990, 'designer', false];
 
- john.push('blue');
- john.unshift('Mr.');
- console.log(john);
+//  john.push('blue');
+//  john.unshift('Mr.');
+//  console.log(john);
 
- john.pop();
- john.pop();
- john.shift();
- console.log(john);
+//  john.pop();
+//  john.pop();
+//  john.shift();
+//  console.log(john);
 
- console.log(john.indexOf(1990));
+//  console.log(john.indexOf(1990));
 
- var isDesigner = john.indexOf('designer') === -1 ? 'John is not a Designer' : 'John is a Designer';
-console.log(isDesigner);
+//  var isDesigner = john.indexOf('designer') === -1 ? 'John is not a Designer' : 'John is a Designer';
+// console.log(isDesigner);
+
+/*********************
+ * CODING CHALLENGE 3
+ *********************/
+
+function tipCalculator(bill) {
+  var tipPercentage = 0.15;
+  if(bill < 50) {
+    tipPercentage = 0.20;
+  } else if(bill > 200) {
+    tipPercentage = 0.10;
+  }
+  return tipPercentage * bill;
+}
+
+var bills = [124, 48, 268];
+var tips = [tipCalculator(bills[0]), tipCalculator(bills[1]), tipCalculator(bills[2])];
+var finalBill = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+console.log("The tip percentage based on the bills:", tips);
+console.log("The final amount of the bill plus the tip:", finalBill);
