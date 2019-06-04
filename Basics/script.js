@@ -364,19 +364,174 @@ if (height === '23') {
  * CODING CHALLENGE 3
  *********************/
 
-function tipCalculator(bill) {
-  var tipPercentage = 0.15;
-  if(bill < 50) {
-    tipPercentage = 0.20;
-  } else if(bill > 200) {
-    tipPercentage = 0.10;
+// function tipCalculator(bill) {
+//   var tipPercentage = 0.15;
+//   if(bill < 50) {
+//     tipPercentage = 0.20;
+//   } else if(bill > 200) {
+//     tipPercentage = 0.10;
+//   }
+//   return tipPercentage * bill;
+// }
+
+// var bills = [124, 48, 268];
+// var tips = [tipCalculator(bills[0]), tipCalculator(bills[1]), tipCalculator(bills[2])];
+// var finalBill = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+
+// console.log("The tip percentage based on the bills:", tips);
+// console.log("The final amount of the bill plus the tip:", finalBill);
+
+/*************************
+ * Objects and Properties
+ *************************/
+
+// Object Literal
+//  var John = {
+//    firstName: 'John', //'Key:Value' pair
+//    lastName: 'Smith',
+//    birthYear: 1990,
+//    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//    job: 'teacher',
+//    isMarried: false
+//  };
+//  console.log(John.firstName);
+//  console.log(John['lastName']);
+//  var x = 'birthYear';
+//  console.log(John[x]);
+
+//  John.job = 'designer';
+//  John['isMarried'] = true;
+//  console.log(John);
+// //New Object Syntax
+//  var Jane = new Object();
+//  Jane.firstName = 'Jane';
+//  Jane.birthYear = 1969;
+//  Jane['lastName'] = 'Smith';
+//  console.log(Jane);
+
+/**********************
+ * Objects and Methods
+ **********************/
+
+//   var John = {
+//    firstName: 'John', //'Key:Value' pair
+//    lastName: 'Smith',
+//    birthYear: 1992,
+//    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+//    job: 'teacher',
+//    isMarried: false,
+//    calcAge: function() {
+//      this.age = 2018 - this.birthYear; //'this' keyword means basically 'this object'
+//    }
+//  };
+
+// John.calcAge();
+// console.log(John);
+
+/*********************
+ * Coding Challenge 4
+ *********************/
+
+//  var John = {
+//    firstName: 'John',
+//    lastName: 'Smith',
+//    mass: 85,
+//    height: 1.71,
+//    calcBmi: function() {
+//      this.bmi = this.mass / (this.height * this.height);
+//      return this.bmi;
+//    } 
+//  };
+
+//  var Mark = {
+//   firstName: 'Mark',
+//   lastName: 'Johnson',
+//   mass: 85,
+//   height: 1.71,
+//   calcBmi: function() {
+//      this.bmi = this.mass / (this.height * this.height);
+//      return this.bmi;
+//     }
+//  };
+
+//  if(John.calcBmi() > Mark.calcBmi()) {
+//    console.log(John.firstName, John.lastName, "has the higher BMI at", John.bmi);
+//   } else if(John.bmi < Mark.bmi) {
+//     console.log(Mark.firstName, Mark.lastName, "has the higher BMI at", Mark.bmi);
+//   } else {
+//     console.log(John.firstName, John.lastName, "and", Mark.firstName, Mark.lastName, "has the same BMI at", John.bmi);
+//   }
+
+/**********************
+ * Loops and Iteration
+ **********************/
+
+ // //For loop
+//  for(var i = 0; i < 10; i++){
+//    console.log(i);
+//  }
+
+//  var john = ['John', 'Smith', 1990, 'designer', false, 'blue'];
+
+//  for(var i = 0; i < john.length; i++){
+//    console.log(john[i]);
+//  }
+
+//  //While loop
+//  var i = 0;
+//  while(i < john.length){
+//    console.log(john[i]);
+//    i++;
+//  }
+
+ //Continue and break statements
+ //break = getting out of the loop
+ //continue = stopping the current cycle and moving onto the next
+
+//  var john = ['John', 'Smith', 1990, 'designer', false, 'blue'];
+//  for(var i = 0; i < john.length; i++){
+//    if(typeof john[i] !== 'string') continue;
+//    console.log(john[i]);
+//  }
+//  //Result: John, Smith, designer, blue
+ 
+//  for(var i = 0; i < john.length; i++){
+//   if(typeof john[i] !== 'string') break;
+//   console.log(john[i]);
+//  }
+//  //Result: John, Smith
+
+//  for(var i = john.length -1; i >= 0; i--){
+//    console.log(john[i]);
+//  }
+
+/*********************
+ * Coding Challenge 5
+ *********************/
+
+ var john = {
+   fullName: "John Smith",
+   bills: [124, 48, 268, 180, 42],
+   calcTips: function() {
+    this.tips = [];
+    this.finalBill = [];
+    
+    for(var i = 0; i > this.bills.length; i++){
+      var tipPercentage;
+      var bill = this.bills[i];
+
+      if(bill < 50) {
+        tipPercentage = 0.20;
+      } else if(bill >= 50 && bill < 200) {
+        tipPercentage = 0.15;
+      } else {
+        tipPercentage = 0.10;
+      }
+    }
+    this.tips[i] = bill * tipPercentage;
+    this.finalBill[i] = bill + bill * tipPercentage;
   }
-  return tipPercentage * bill;
-}
+};
 
-var bills = [124, 48, 268];
-var tips = [tipCalculator(bills[0]), tipCalculator(bills[1]), tipCalculator(bills[2])];
-var finalBill = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
-
-console.log("The tip percentage based on the bills:", tips);
-console.log("The final amount of the bill plus the tip:", finalBill);
+john.calcTips();
+console.log(john);
