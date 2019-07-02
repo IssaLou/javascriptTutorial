@@ -509,29 +509,82 @@ if (height === '23') {
  * Coding Challenge 5
  *********************/
 
- var john = {
-   fullName: "John Smith",
-   bills: [124, 48, 268, 180, 42],
-   calcTips: function() {
-    this.tips = [];
-    this.finalBill = [];
-    
-    for(var i = 0; i > this.bills.length; i++){
-      var tipPercentage;
-      var bill = this.bills[i];
+var john = {
+  fullName: 'John Smith',
+  bills: [124, 48, 268, 180, 42],
+  calcTips: function() {
+    this.allTips = [];
+    this.totalPaid = [];
+
+    for(i = 0; i < this.bills.length; i++){
+      bill = this.bills[i];
 
       if(bill < 50) {
         tipPercentage = 0.20;
-      } else if(bill >= 50 && bill < 200) {
+      }
+      else if(bill >= 50 && bill <= 200){
         tipPercentage = 0.15;
-      } else {
+      }
+      else {
         tipPercentage = 0.10;
       }
+
+      this.allTips[i] = bill * tipPercentage;
+      this.totalPaid[i] = bill + bill * tipPercentage; 
     }
-    this.tips[i] = bill * tipPercentage;
-    this.finalBill[i] = bill + bill * tipPercentage;
   }
 };
 
+var mark = {
+  fullName: 'Mark Jones',
+  bills: [77, 375, 110, 45],
+  calcTips: function() {
+    this.allTips = [];
+    this.totalPaid = [];
+
+    for(i = 0; i < this.bills.length; i++){
+      bill = this.bills[i];
+
+      if(bill < 100) {
+        tipPercentage = 0.20;
+      }
+      else if(bill >= 100 && bill <= 300){
+        tipPercentage = 0.15;
+      }
+      else {
+        tipPercentage = 0.10;
+      }
+
+      this.allTips[i] = bill * tipPercentage;
+      this.totalPaid[i] = bill + bill * tipPercentage; 
+    }
+  }
+};
+
+function averageTips(johnPaid, markPaid) {
+  var johnSum = 0;
+  var markSum = 0;
+
+  for(i = 0; i < johnPaid.length; i++) {
+    johnSum += johnPaid[i];
+    johnAverage = johnSum / johnPaid.length;
+  }
+  for(i = 0; i < markPaid.length; i++) {
+    markSum += markPaid[i];
+    markAverage = markSum / markPaid.length;
+  }
+  if(this.johnAverage > this.markAverage) {
+    console.log("John's family paid more in tips on average compared to Mark's family");
+    console.log(this.johnAverage);
+  }
+  else {
+    console.log("Mark's family paid more in tips on average compared to John's family");
+    console.log(this.markAverage);
+  }
+}
+
 john.calcTips();
+mark.calcTips();
+averageTips(john.allTips, mark.allTips);
 console.log(john);
+console.log(mark)
