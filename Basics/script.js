@@ -537,7 +537,7 @@ var john = {
 
 var mark = {
   fullName: 'Mark Jones',
-  bills: [77, 375, 110, 45],
+  bills: [77, 475, 110, 45],
   calcTips: function() {
     this.allTips = [];
     this.totalPaid = [];
@@ -549,10 +549,10 @@ var mark = {
         tipPercentage = 0.20;
       }
       else if(bill >= 100 && bill <= 300){
-        tipPercentage = 0.15;
+        tipPercentage = 0.10;
       }
       else {
-        tipPercentage = 0.10;
+        tipPercentage = 0.25;
       }
 
       this.allTips[i] = bill * tipPercentage;
@@ -561,30 +561,24 @@ var mark = {
   }
 };
 
-function averageTips(johnPaid, markPaid) {
-  var johnSum = 0;
-  var markSum = 0;
-
-  for(i = 0; i < johnPaid.length; i++) {
-    johnSum += johnPaid[i];
-    johnAverage = johnSum / johnPaid.length;
+function averageTips(tips) {
+  var sum = 0;
+  for(i = 0; i < tips.length; i++) {
+    sum += tips[i];
   }
-  for(i = 0; i < markPaid.length; i++) {
-    markSum += markPaid[i];
-    markAverage = markSum / markPaid.length;
-  }
-  if(this.johnAverage > this.markAverage) {
-    console.log("John's family paid more in tips on average compared to Mark's family");
-    console.log(this.johnAverage);
-  }
-  else {
-    console.log("Mark's family paid more in tips on average compared to John's family");
-    console.log(this.markAverage);
-  }
+  return sum / tips.length;
 }
 
 john.calcTips();
 mark.calcTips();
-averageTips(john.allTips, mark.allTips);
-console.log(john);
-console.log(mark)
+
+john.average = averageTips(john.allTips);
+mark.average = averageTips(mark.allTips);
+console.log(john, mark);
+
+ if(john.average > mark.average) {
+    console.log("John's family paid more in tips with an average $" + john.average);
+  }
+  else {
+    console.log("Mark's family paid more in tips with an average $" + mark.average);
+  }
