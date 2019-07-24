@@ -509,76 +509,76 @@ if (height === '23') {
  * Coding Challenge 5
  *********************/
 
-var john = {
-  fullName: 'John Smith',
-  bills: [124, 48, 268, 180, 42],
-  calcTips: function() {
-    this.allTips = [];
-    this.totalPaid = [];
+// var john = {
+//   fullName: 'John Smith',
+//   bills: [124, 48, 268, 180, 42],
+//   calcTips: function() {
+//     this.allTips = [];
+//     this.totalPaid = [];
 
-    for(i = 0; i < this.bills.length; i++){
-      bill = this.bills[i];
+//     for(i = 0; i < this.bills.length; i++){
+//       bill = this.bills[i];
 
-      if(bill < 50) {
-        tipPercentage = 0.20;
-      }
-      else if(bill >= 50 && bill <= 200){
-        tipPercentage = 0.15;
-      }
-      else {
-        tipPercentage = 0.10;
-      }
+//       if(bill < 50) {
+//         tipPercentage = 0.20;
+//       }
+//       else if(bill >= 50 && bill <= 200){
+//         tipPercentage = 0.15;
+//       }
+//       else {
+//         tipPercentage = 0.10;
+//       }
 
-      this.allTips[i] = bill * tipPercentage;
-      this.totalPaid[i] = bill + bill * tipPercentage; 
-    }
-  }
-};
+//       this.allTips[i] = bill * tipPercentage;
+//       this.totalPaid[i] = bill + bill * tipPercentage; 
+//     }
+//   }
+// };
 
-var mark = {
-  fullName: 'Mark Jones',
-  bills: [77, 475, 110, 45],
-  calcTips: function() {
-    this.allTips = [];
-    this.totalPaid = [];
+// var mark = {
+//   fullName: 'Mark Jones',
+//   bills: [77, 475, 110, 45],
+//   calcTips: function() {
+//     this.allTips = [];
+//     this.totalPaid = [];
 
-    for(i = 0; i < this.bills.length; i++){
-      bill = this.bills[i];
+//     for(i = 0; i < this.bills.length; i++){
+//       bill = this.bills[i];
 
-      if(bill < 100) {
-        tipPercentage = 0.20;
-      }
-      else if(bill >= 100 && bill <= 300){
-        tipPercentage = 0.10;
-      }
-      else {
-        tipPercentage = 0.25;
-      }
+//       if(bill < 100) {
+//         tipPercentage = 0.20;
+//       }
+//       else if(bill >= 100 && bill <= 300){
+//         tipPercentage = 0.10;
+//       }
+//       else {
+//         tipPercentage = 0.25;
+//       }
 
-      this.allTips[i] = bill * tipPercentage;
-      this.totalPaid[i] = bill + bill * tipPercentage; 
-    }
-  }
-};
+//       this.allTips[i] = bill * tipPercentage;
+//       this.totalPaid[i] = bill + bill * tipPercentage; 
+//     }
+//   }
+// };
 
-function averageTips(tips) {
-  var sum = 0;
-  for(i = 0; i < tips.length; i++) {
-    sum += tips[i];
-  }
-  return sum / tips.length;
-}
+// function averageTips(tips) {
+//   var sum = 0;
+//   for(i = 0; i < tips.length; i++) {
+//     sum += tips[i];
+//   }
+//   return sum / tips.length;
+// }
 
-john.calcTips();
-mark.calcTips();
+// john.calcTips();
+// mark.calcTips();
 
-john.average = averageTips(john.allTips);
-mark.average = averageTips(mark.allTips);
-console.log(john, mark);
+// john.average = averageTips(john.allTips);
+// mark.average = averageTips(mark.allTips);
+// console.log(john, mark);
 
- if(john.average > mark.average) {
-    console.log("John's family paid more in tips with an average $" + john.average);
-  }
-  else {
-    console.log("Mark's family paid more in tips with an average $" + mark.average);
-  }
+//  if(john.average > mark.average) {
+//     console.log("John's family paid more in tips with an average $" + john.average);
+//   }
+//   else {
+//     console.log("Mark's family paid more in tips with an average $" + mark.average);
+//   }
