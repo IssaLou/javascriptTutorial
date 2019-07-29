@@ -83,7 +83,14 @@ function third() {
 ///////////////////////////////////////
 // Lecture: The this keyword
 
+// Regular function call: the this keyword points at the 
+// global object (the window object in the browser).
 
+// Method call: the this variable points to the object
+// that is calling the method.
+
+// The this keyword is not assigned a value until a 
+// function where it is actually defined is actually called. 
 
 
 
