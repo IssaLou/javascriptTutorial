@@ -18,6 +18,10 @@ GAME RULES:
 
 //First DOM and DOM Manipulation
 
+//Remember let and const are pretty much the same as var; except,
+// let = variable values so changing anything that is a variable.
+// const =  something that is assigned once and never changed.
+
 var scores, roundScore, activePlayer, dice;
 
 scores = [0,0];
@@ -53,24 +57,42 @@ document.querySelector('.btn-roll').addEventListener('click', function() {;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
     } else {
         //Next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        roundScore = 0;
-
-        document.getElementById('current-0').textContent = '0';
-        document.getElementById('current-1').textContent = '0';
-        
-        //These commented out below removes a tag when something happens in the HTML file and can add a tag too.
-        //The other two do exactle the same thing but toggle between the two HTML tags which is dependent on the conditions above.
-        //document.querySelector('.player-0-panel').classList.remove('active');
-        //document.querySelector('.player-1-panel').classList.add('active');
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
-
-        document.querySelector('.dice').style.display = 'none';
+        nextPlayer();
     }
 
 });
 
+document.querySelector('.btn-hold').addEventListener('click', function() {
+    //Add CURRENT score to GLOBAL score.
+    scores[activePlayer] += roundScore;
 
+    //Update the UI 
+    document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
+    //Check if player won the game
+    if(scores[activePlayer] >= 100) {
+        document.querySelector('#name-' + activePlayer).textContent = 'WINNER!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active'); 
+    } else {
+        nextPlayer();
+    }
+});
 
+function nextPlayer() {
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+        
+    //These commented out below removes a tag when something happens in the HTML file and can add a tag too.
+    //The other two do exactle the same thing but toggle between the two HTML tags which is dependent on the conditions above.
+    //document.querySelector('.player-0-panel').classList.remove('active');
+    //document.querySelector('.player-1-panel').classList.add('active');
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+    document.querySelector('.dice').style.display = 'none';
+}
