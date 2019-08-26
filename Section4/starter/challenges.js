@@ -13,7 +13,7 @@ Change the game to follow these new rules:
     second dice, so take a look at the css code for the first one.)
 */
 
-var scores, roundScore, activePlayer, dice, gamePlaying, sixCount;
+var scores, roundScore, activePlayer, dice, gamePlaying;
 
 init();
 
@@ -28,13 +28,6 @@ document.querySelector('.btn-roll').addEventListener('click', function() {;
         let diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
-        
-        if(previousDiceRoll === 6 && dice === 6) {
-            sixCount = true;
-            console.log("sixCount in if:", sixCount)
-        }
-        console.log("sixCount out if:", sixCount)
-        console.log(dice);
 
         //3. Update the round score if the rolled number was NOT a 1
         if(previousDiceRoll === 6 && dice === 6) {
@@ -93,7 +86,6 @@ function nextPlayer() {
         activePlayer = 0;
         roundScore = 0;
         gamePlaying = true;
-        sixCount = false;
 
         document.querySelector('.dice').style.display = 'none';
 
