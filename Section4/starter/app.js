@@ -44,9 +44,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {;
         
         if(previousDiceRoll === 6 && dice === 6) {
             sixCount = true;
-            console.log("in if:", dice);
             console.log("sixCount in if:", sixCount)
-            nextPlayer();
         }
         previousDiceRoll = dice;
         console.log("sixCount out if:", sixCount)
@@ -99,7 +97,7 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    document.querySelector('.dice').style.display = 'none';
+    //document.querySelector('.dice').style.display = 'none';
 }
 
     document.querySelector('.btn-new').addEventListener('click', init);
