@@ -26,7 +26,7 @@ GAME RULES:
 //document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 //var x = document.querySelector('#score-0').textContent;
 //console.log(x);
-var scores, roundScore, activePlayer, dice, gamePlaying;
+var scores, roundScore, activePlayer, dice, gamePlaying, previousDiceRoll, sixCount;
 
 init();
 //Events and Event Handling: Rolling the Dice
@@ -40,9 +40,20 @@ document.querySelector('.btn-roll').addEventListener('click', function() {;
         //2. Display the result
         let diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
-        diceDOM.src = 'dice-' + dice + '.png'
+        diceDOM.src = 'dice-' + dice + '.png';
+        
+        if(previousDiceRoll === 6 && dice === 6) {
+            sixCount = true;
+            console.log("in if:", dice);
+            console.log("sixCount in if:", sixCount)
+            nextPlayer();
+        }
+        previousDiceRoll = dice;
+        console.log("sixCount out if:", sixCount)
+        console.log(dice);
+
         //3. Update the round score if the rolled number was NOT a 1
-        if(dice !== 1) {
+        if(dice !== 1 && sixCount !== true) {
             // Add score
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -98,6 +109,7 @@ function nextPlayer() {
         activePlayer = 0;
         roundScore = 0;
         gamePlaying = true;
+        sixCount = false;
 
         document.querySelector('.dice').style.display = 'none';
 
@@ -113,3 +125,19 @@ function nextPlayer() {
         document.querySelector('.player-1-panel').classList.remove('winner');
         document.querySelector('.player-0-panel').classList.add('active');
     }
+
+
+/*
+3 CHALLENGES
+Change the game to follow these new rules:
+
+1. A player looses their ENTIRE score when they roll two sixes in a row.
+    After that, it's the next player's turn (Hint: Always save the previous dice
+    roll in a separte variable).
+2. Add an input field to the HTML where players can set the winning score, so that
+    they change the predefined socre of 100. (Hint: you can read that value with the
+    .value property in JS. This is a good opportunity to use google to figure it out).
+3. Add another dice to the game, so that there are two dices now. The player looses
+    his current score when one of them is a 1. (Hint: you will need css to position the
+    second dice, so take a look at the css code for the first one.)
+*/
