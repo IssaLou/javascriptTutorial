@@ -13,9 +13,11 @@ Change the game to follow these new rules:
     second dice, so take a look at the css code for the first one.)
 */
 
-var scores, roundScore, activePlayer, dice, gamePlaying, previousDiceRoll, sixCount;
+var scores, roundScore, activePlayer, dice, gamePlaying, sixCount;
 
 init();
+
+var previousDiceRoll;
 
 document.querySelector('.btn-roll').addEventListener('click', function() {;
     if(gamePlaying) {
@@ -31,19 +33,23 @@ document.querySelector('.btn-roll').addEventListener('click', function() {;
             sixCount = true;
             console.log("sixCount in if:", sixCount)
         }
-        previousDiceRoll = dice;
         console.log("sixCount out if:", sixCount)
         console.log(dice);
 
         //3. Update the round score if the rolled number was NOT a 1
-        if(dice !== 1 && sixCount !== true) {
+        if(previousDiceRoll === 6 && dice === 6) {
+            scores[activePlayer] = 0;
+            document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
+            nextPlayer();
+        } else if(dice !== 1){
             // Add score
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
         } else {
             //Next player
             nextPlayer();
-        } 
+        }
+        previousDiceRoll = dice; 
     }
 });
 
@@ -77,7 +83,7 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    //document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice').style.display = 'none';
 }
 
     document.querySelector('.btn-new').addEventListener('click', init);
