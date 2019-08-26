@@ -41,17 +41,9 @@ document.querySelector('.btn-roll').addEventListener('click', function() {;
         let diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
-        
-        if(previousDiceRoll === 6 && dice === 6) {
-            sixCount = true;
-            console.log("sixCount in if:", sixCount)
-        }
-        previousDiceRoll = dice;
-        console.log("sixCount out if:", sixCount)
-        console.log(dice);
 
         //3. Update the round score if the rolled number was NOT a 1
-        if(dice !== 1 && sixCount !== true) {
+        if(dice !== 1) {
             // Add score
             roundScore += dice;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -97,7 +89,7 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    //document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.dice').style.display = 'none';
 }
 
     document.querySelector('.btn-new').addEventListener('click', init);
@@ -107,7 +99,6 @@ function nextPlayer() {
         activePlayer = 0;
         roundScore = 0;
         gamePlaying = true;
-        sixCount = false;
 
         document.querySelector('.dice').style.display = 'none';
 
