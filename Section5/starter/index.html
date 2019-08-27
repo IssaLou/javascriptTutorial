@@ -7,6 +7,91 @@
 
     <body>
         <h1>Section 5: Advanced JavaScript: Objects and Functions</h1>
+        <h2>Object Orientated Programming (OOP)</h2> 
+        <p>Has objects that interact with one another through methods and properties</p>
+        <p>These objects are used to store data, structure our code and keep the code clean</p>
+
+        <h2>Constructors and Instances</h2>
+        <p>As an example:
+            <b>Person</b>
+            name
+            yearOfBirth
+            job
+            calculateAge()
+
+        The above is an example of a Person constructor where it could be used as a blueprint to create Person instances
+        
+        As an example:
+            <b>var jane</b>
+            jane
+            1948
+            retired
+            calculateAge()
+
+            <b>var john</b>
+            john
+            1990
+            teacher
+            calculateAge()
+        
+        <h2>Inheritance in General</h2>
+        Basically where one object is based on another object and gets access to another objects properties and methods.
+        As an example, say we have a new object:
+            <b>Athlete</b>
+            olympics
+            olympicMedals
+            allowedOlympics()
+        
+        Now, every athlete is a person too and there's no point in repeating ourselves. So, the Athlete object could inherit
+        the Person object, making it:
+        
+        <b>Athlete</b>
+            olympics
+            olympicMedals
+            allowedOlympics()
+            name
+            yearOfBirth
+            job
+            calculateAge()
+
+        <h2>Inheritance in JavaScript: Prototypes and Prototype Chains</h2>
+        Javascript is a prototype based language which means inheritance works by using something called prototypes.
+        In practice that means each and ecery javascript object has a prototype property.
+        
+        Using the same example:
+
+        <b>Person</b>
+            name
+            yearOfBirth
+            job
+            calculateAge() <--prototype
+        
+            <b>var john</b> <-- instance of Person
+            john
+            1990
+            teacher
+            calculateAge()    
+        
+        It is important to note here that the person prototype is not prototype of the person iteself but of all instances
+        that are created through the person blueprint like for John. So in other words, the persons prototype property is 
+        the prototype of John. Furthermore, the person object itself is an instance of an even bigger structure which is 
+        the object object.
+        So each and every object that we ever create is an instance of the object constructor which has a bunch of methods 
+        in its prototype property (e.g. hasOwnProperty(), isPrototypeOf(), constructor(), toString(), valueOf() etc.) 
+        and so the Person Object can inherit these methods and can call thb and so too can the John Object. This is called 
+        the <b>Prototype Chain</b>; this is what makes all of this inheritance possible.
+        When we try to access a certain method or property on an Object, Javascript will first try to find the method on 
+        that exact Object. If it cannot find it then it will look in the Object's prototype. It will keep looking until it 
+        hits 'null'; which is the final link in the protoype chain and that is why 'undefined' is returned.
+        
+        <h2>In Summary</h2>
+        <lu>  
+            <li>Every JavaScript property has a <b>Prototype Property</b>, which makes inheritance possible.</li>
+            <li>The prototype property of an Object is where we put methods and properties that we want <b>other objects to inherit.</b></li>
+            <li>The Constructors prototype property is <b>not</b> the prototype of the Constructor itself, it's the prototype of <b>all</b> instances that are created through it.</li>
+            <li>When a certain method or property is called, the search starts in the Object itself, and if it cannot be found there then it will move onto the Objects prototype. This continues until the method is found: <b>Protype Chain</b></li>
+        </lu>
+        </p>
         <script src="script.js"></script>
     </body>
 </html>
