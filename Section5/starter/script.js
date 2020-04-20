@@ -346,28 +346,28 @@ EXPERT LEVEL:
 */
 
 (function() {
-  let Question = function(query, possibleAns, correctAns) {
+  function Question(query, choices, answer) {
     this.query = query;
-    this.possibleAns = possibleAns;
-    this.correctAns = correctAns;
-  };
+    this.choices = choices;
+    this.answer = answer;
+  }
 
   Question.prototype.displayQuestion = function() {
     console.log(this.query);
 
-    for (let i = 0; i < this.possibleAns.length; i++) {
-      console.log(i + ": " + this.possibleAns[i]);
+    for (var i = 0; i < this.choices.length; i++) {
+      console.log(i + ": " + this.choices[i]);
     }
   };
 
   Question.prototype.checkAnswer = function(ans, callback) {
     let sc;
 
-    if (ans === this.correctAns) {
+    if (ans === this.answer) {
       console.log("Correct answer!");
       sc = callback(true);
     } else {
-      console.log("Incorrect! Try again");
+      console.log("Incorrect answer!");
       sc = callback(false);
     }
 
@@ -379,25 +379,28 @@ EXPERT LEVEL:
     console.log("------------------------------");
   };
 
-  let qOne = new Question(
-    "Is the JavaScript language the best language ever?",
+  var q1 = new Question(
+    "Is JavaScript the coolest programming language in the world?",
     ["Yes", "No", "Maybe?"],
     0
   );
-  let qTwo = new Question(
-    "What is the name of the teacher in this couse?",
-    ["John", "Jane", "Jonas", "Mark"],
+
+  var q2 = new Question(
+    "What is the name of this course's teacher?",
+    ["John", "Micheal", "Jonas", "Mark"],
     2
   );
-  let qThree = new Question(
+
+  var q3 = new Question(
     "Are we still in lockdown?",
-    ["No", "Yes", "What's lockdown?"],
+    ["Not really sure", "Yes", "No", "What's lockdown?"],
     1
   );
-  let questionArr = [qOne, qTwo, qThree];
+
+  var querys = [q1, q2, q3];
 
   function score() {
-    let sc = 0;
+    var sc = 0;
     return function(correct) {
       if (correct) {
         sc++;
@@ -407,23 +410,17 @@ EXPERT LEVEL:
   }
   let keepScore = score();
 
-  function keepPlaying() {
-    let n = Math.floor(Math.random() * questionArr.length);
-    questionArr[n].displayQuestion();
+  function nextQuestion() {
+    var n = Math.floor(Math.random() * querys.length);
+    querys[n].displayQuestion();
 
-    let answer = parseInt(prompt("Please select the correct answer."));
-    questionArr[n].checkAnswer(answer);
+    var answer = prompt("Please select the correct answer.");
 
-    if (
-      answer.toString() !== "quit" ||
-      answer.toString() !== "Quit" ||
-      answer.toString() !== "exit" ||
-      answer.toString() !== "Exit"
-    ) {
-      questionArr[n].checkAnswer(answer, keepScore);
+    if (answer !== "exit") {
+      querys[n].checkAnswer(parseInt(answer), keepScore);
+
+      nextQuestion();
     }
-
-    keepPlaying();
   }
-  keepPlaying();
+  nextQuestion();
 })();
